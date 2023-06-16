@@ -1,0 +1,251 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="property"
+            type="com.pedronunes.hostelworld.data.models.Property" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/list_padding"
+        app:cardCornerRadius="@dimen/item_list_corner_radius_card"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/light_gray"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/item_list_padding_bottom_card">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewProperty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/item_list_margin_card"
+                android:layout_marginTop="@dimen/item_list_margin_card"
+                app:cardCornerRadius="@dimen/item_list_corner_radius_card"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageViewProperty"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/example" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewFeatured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_featured"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="1dp"
+                android:text="@string/featured_property"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="@{property.isFeatured ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/cardViewProperty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardViewProperty"
+                app:layout_constraintVertical_bias="0.2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewPropertyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/extra_high_margin_text_card"
+                android:layout_marginTop="@dimen/extra_high_margin_text_card"
+                android:text="@{property.name}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/cardViewProperty"
+                tools:text="St Christopher's Barcelona" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewStarRating"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/high_margin_text_card"
+                android:layout_marginTop="@dimen/small_margin_text_card"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_star_rating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewPropertyName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin_text_card"
+                android:text="@{property.overallRating.getOverallRatingString()}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewStarRating"
+                app:layout_constraintStart_toEndOf="@id/imageViewStarRating"
+                app:layout_constraintTop_toTopOf="@id/imageViewStarRating"
+                tools:text="8,7" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewRatingMeaning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin_text_card"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewRating"
+                app:layout_constraintStart_toEndOf="@id/textViewRating"
+                tools:text="@string/fabulous" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewNumberOfRatings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin_text_card"
+                android:text='@{"("+property.overallRating.numberOfRatings+")"}'
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewRating"
+                app:layout_constraintStart_toEndOf="@id/textViewRatingMeaning"
+                tools:text="(11889)" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTypeDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/extra_high_margin_text_card"
+                android:layout_marginTop="@dimen/small_margin_text_card"
+                android:text="@{@string/type_distance_details(property.getTypeLowercaseCapitalize(),property.distance.value,property.distance.units)}"
+                android:textColor="@color/dark_gray"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageViewStarRating"
+                tools:text="Hostel - 0.22km from city centre" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayoutPrices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewTypeDistance">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="@dimen/title_price_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/extra_high_margin_text_card"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewPrivateDormsFrom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:text="@{property.lowestPrivatePricePerNight.getValueVisibility() ? @string/privates_from : @string/no_privates}"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="11sp"
+                        tools:text="@string/privates_from" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewPrivatePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:text="@{@string/price(property.lowestPrivatePricePerNight.getValueString())}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:visibility="@{property.lowestPrivatePricePerNight.getValueVisibility() ? View.VISIBLE : View.GONE}"
+                        tools:text="€ 84" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/medium_margin_text_card"
+                    android:background="@color/light_gray" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="@dimen/title_price_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/extra_high_margin_text_card"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewDormsFrom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:text="@{property.lowestAverageDormPricePerNight.getValueVisibility() ? @string/dorms_from : @string/no_dorms}"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="11sp"
+                        tools:text="@string/dorms_from" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:text="@{@string/price(property.lowestAverageDormPricePerNight.getValueString())}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:visibility="@{property.lowestAverageDormPricePerNight.getValueVisibility() ? View.VISIBLE : View.GONE}"
+                        tools:text="€ 84" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewPriceOlder"
+                android:layout_width="@dimen/title_price_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/extra_high_margin_text_card"
+                android:gravity="end"
+                android:textColor="@color/dark_gray"
+                android:textSize="11sp"
+                android:visibility="@{property.lowestAverageDormPricePerNight.getValueVisibility()&amp;&amp;property.lowestAverageDormPricePerNight.getOriginalValueVisibility() ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayoutPrices"
+                tools:text="€ 93" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewPrivatePriceOlder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/price_older_margin_end"
+                android:textColor="@color/dark_gray"
+                android:textSize="11sp"
+                android:visibility="@{property.lowestPrivatePricePerNight.getValueVisibility()&amp;&amp;property.lowestAveragePrivatePricePerNight.getOriginalValueVisibility() ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayoutPrices"
+                tools:text="€ 93" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

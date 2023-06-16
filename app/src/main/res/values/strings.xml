@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Hostelworld</string>
+    <string name="featured_property">Featured Property</string>
+    <string name="type_distance_details">%1$s - %2$.2f%3$s from city centre</string>
+    <string name="dorms_from">Dorms from</string>
+    <string name="privates_from">Privates from</string>
+    <string name="no_dorms">No Dorm Availability</string>
+    <string name="no_privates">No Private Availability</string>
+    <string name="price">€ %1$s</string>
+
+    <string name="empty" />
+    <string name="good">Good</string>
+    <string name="very_good">Very good</string>
+    <string name="fabulous">Fabulous</string>
+    <string name="superb">Superb</string>
 </resources>

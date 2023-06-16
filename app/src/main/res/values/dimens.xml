@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_list_margin_card">4dp</dimen>
+    <dimen name="item_list_corner_radius_card">20dp</dimen>
+    <dimen name="small_margin_text_card">2dp</dimen>
+    <dimen name="medium_margin_text_card">4dp</dimen>
+    <dimen name="high_margin_text_card">6dp</dimen>
+    <dimen name="extra_high_margin_text_card">10dp</dimen>
+    <dimen name="list_padding">12dp</dimen>
+    <dimen name="item_list_padding_bottom_card">16dp</dimen>
+    <dimen name="title_price_width">70dp</dimen>
+    <dimen name="price_older_margin_end">99dp</dimen>
+</resources>
