@@ -9,16 +9,28 @@
         android:id="@+id/propertyListFragment"
         android:name="com.pedronunes.hostelworld.ui.fragments.PropertyListFragment"
         android:label="Property List"
-        tools:layout="@layout/fragment_property_list" />
+        tools:layout="@layout/fragment_property_list">
+
+        <action
+            android:id="@+id/action_propertyListFragment_to_propertyDetailsFragment"
+            app:destination="@id/propertyDetailsFragment">
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/propertyDetailsFragment"
         android:name="com.pedronunes.hostelworld.ui.fragments.PropertyDetailsFragment"
         android:label="Property Details"
-        tools:layout="@layout/fragment_property_details" />
+        tools:layout="@layout/fragment_property_details">
 
-    <action
-        android:id="@+id/action_propertyListFragment_to_propertyDetailsFragment"
-        app:destination="@id/propertyDetailsFragment" />
-
+        <argument
+            android:name="propertyPosition"
+            app:argType="integer" />
+        <argument
+            android:name="propertyCity"
+            app:argType="string" />
+        <argument
+            android:name="propertyCountry"
+            app:argType="string" />
+    </fragment>
 </navigation>

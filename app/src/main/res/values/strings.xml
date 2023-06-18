@@ -8,6 +8,10 @@
     <string name="no_privates">No Private Availability</string>
     <string name="price">€ %1$s</string>
 
+    <string name="number_reviews">%1$s reviews</string>
+    <string name="location_field">%1$s - %2$s</string>
+    <string name="about">About</string>
+
     <string name="empty" />
     <string name="good">Good</string>
     <string name="very_good">Very good</string>

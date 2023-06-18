@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.gms.maps.MapsInitializer
 import com.pedronunes.hostelworld.databinding.ActivityMainBinding
 import com.pedronunes.hostelworld.di.AppComponent
 import com.pedronunes.hostelworld.di.AppModule
@@ -12,7 +13,7 @@ import com.pedronunes.hostelworld.di.DaggerAppComponent
 import com.pedronunes.hostelworld.viewmodel.PropertiesViewModel
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var navController: NavController
+    lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private lateinit var appComponent: AppComponent
     lateinit var propertiesViewModel: PropertiesViewModel
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
             this, appComponent.getPropertiesViewModelFactory()
         )[PropertiesViewModel::class.java]
         propertiesViewModel.fetchProperties()
+
+        MapsInitializer.initialize(this, MapsInitializer.Renderer.LATEST) {}
     }
 
     override fun onSupportNavigateUp(): Boolean {

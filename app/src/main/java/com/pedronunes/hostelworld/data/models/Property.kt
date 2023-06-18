@@ -1,5 +1,6 @@
 package com.pedronunes.hostelworld.data.models
 
+import android.text.Html
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -53,4 +54,6 @@ data class Property(
 ) {
     fun getTypeLowercaseCapitalize() = type?.lowercase()
         ?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
+
+    fun getOverviewDecoded() = Html.fromHtml(overview, Html.FROM_HTML_MODE_LEGACY).toString()
 }

@@ -16,6 +16,7 @@ import java.util.*
 
 class PropertyAdapter : RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>() {
     private var list: List<Property> = listOf()
+    private var itemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyViewHolder {
         val binding =
@@ -27,6 +28,10 @@ class PropertyAdapter : RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>
         holder.bind(list[position])
 
     override fun getItemCount() = list.size
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setupList(list: List<Property>) {
@@ -78,7 +83,13 @@ class PropertyAdapter : RecyclerView.Adapter<PropertyAdapter.PropertyViewHolder>
             )
             binding.textViewPrivatePriceOlder.text = olderPrivatePriceSpannableString
 
-            binding.executePendingBindings()
+            itemView.setOnClickListener {
+                itemClickListener?.onItemClick(property, layoutPosition)
+            }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(property: Property, position: Int)
     }
 }

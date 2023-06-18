@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
 android {
     namespace 'com.pedronunes.hostelworld'
@@ -58,7 +59,8 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.15.1'
     //Material Design 3
     implementation 'com.google.android.material:material:1.9.0'
-    //implementation 'com.google.android.material:material:1.10.0-alpha03'
+    //Google Maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

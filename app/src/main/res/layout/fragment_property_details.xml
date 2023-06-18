@@ -1,6 +1,154 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</LinearLayout>
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="property"
+            type="com.pedronunes.hostelworld.data.models.Property" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewImageslist"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_list_images_height"
+            android:layout_marginTop="@dimen/list_padding"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/list_padding"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="3"
+            tools:listitem="@layout/view_item_image_list" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/extra_high_margin_text_card"
+            android:layout_marginTop="@dimen/extra_high_margin_text_card"
+            android:text="@{property.getTypeLowercaseCapitalize()}"
+            android:textColor="@color/dark_gray"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewImageslist"
+            tools:text="Hostel" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewPropertyName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/extra_high_margin_text_card"
+            android:layout_marginTop="@dimen/medium_margin_text_card"
+            android:text="@{property.name}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/imageViewStarRating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewType"
+            tools:text="St Christopher's Barcelona" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewStarRating"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/extra_high_margin_text_card"
+            android:src="@drawable/ic_star_rating"
+            app:layout_constraintEnd_toStartOf="@id/textViewRating"
+            app:layout_constraintTop_toBottomOf="@id/textViewType" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/extra_high_margin_text_card"
+            android:text="@{property.overallRating.getOverallRatingString()}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewStarRating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageViewStarRating"
+            tools:text="8,7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewNumberOfRatings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin_text_card"
+            android:text="@{@string/number_reviews(property.overallRating.numberOfRatings)}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewRating"
+            app:layout_constraintTop_toBottomOf="@id/textViewRating"
+            tools:text="11889 reviews" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewLocation"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="@dimen/extra_high_margin_text_card"
+            android:layout_marginTop="@dimen/small_margin_text_card"
+            android:src="@drawable/baseline_location_on_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewPropertyName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/high_margin_text_card"
+            android:layout_marginTop="@dimen/small_margin_text_card"
+            android:textColor="@color/dark_gray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/textViewNumberOfRatings"
+            app:layout_constraintStart_toEndOf="@id/imageViewLocation"
+            app:layout_constraintTop_toBottomOf="@id/textViewPropertyName"
+            tools:text="Hostel" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAboutTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/extra_high_margin_text_card"
+            android:layout_marginTop="@dimen/titles_margin_top"
+            android:text="@string/about"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewLocation" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAbout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/extra_high_margin_text_card"
+            android:layout_marginTop="@dimen/small_margin_text_card"
+            android:text="@{property.getOverviewDecoded()}"
+            android:textColor="@color/dark_gray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewAboutTitle"
+            tools:text="Hostel" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/titles_margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewAbout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
