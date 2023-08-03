@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/propertyListFragment"
-        android:name="com.pedronunes.hostelworld.ui.fragments.PropertyListFragment"
+        android:name="com.pedronunes.propertiesapp.ui.fragments.PropertyListFragment"
         android:label="Property List"
         tools:layout="@layout/fragment_property_list">
 
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/propertyDetailsFragment"
-        android:name="com.pedronunes.hostelworld.ui.fragments.PropertyDetailsFragment"
+        android:name="com.pedronunes.propertiesapp.ui.fragments.PropertyDetailsFragment"
         android:label="Property Details"
         tools:layout="@layout/fragment_property_details">
 

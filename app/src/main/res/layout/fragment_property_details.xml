@@ -8,7 +8,7 @@
 
         <variable
             name="property"
-            type="com.pedronunes.hostelworld.data.models.Property" />
+            type="com.pedronunes.propertiesapp.data.models.Property" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

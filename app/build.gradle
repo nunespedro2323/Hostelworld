@@ -6,11 +6,11 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
 android {
-    namespace 'com.pedronunes.hostelworld'
+    namespace 'com.pedronunes.propertiesapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.pedronunes.hostelworld"
+        applicationId "com.pedronunes.propertiesapp"
         minSdk 24
         targetSdk 33
         versionCode 1

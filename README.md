@@ -1,2 +1,2 @@
-# Hostelworld
-Hostelworld Android Challenge
+# Properties Android App
+Properties Android App Challenge
